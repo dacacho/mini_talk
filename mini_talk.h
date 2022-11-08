@@ -6,7 +6,7 @@
 /*   By: danierod <danierod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 18:36:58 by danierod          #+#    #+#             */
-/*   Updated: 2022/11/06 22:06:10 by danierod         ###   ########.fr       */
+/*   Updated: 2022/11/08 20:18:32 by danierod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINI_TALK_H
 
 # include <signal.h>
+# include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -30,7 +31,6 @@ typedef struct s_arg
 
 void	set_bin(char *pid, char *str);
 int		set_pid(char *str);
-void	unbid(int sig);
 void	pp(int nb);
 
 #endif

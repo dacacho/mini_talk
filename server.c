@@ -6,7 +6,7 @@
 /*   By: danierod <danierod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 18:36:58 by danierod          #+#    #+#             */
-/*   Updated: 2022/11/08 17:58:43 by danierod         ###   ########.fr       */
+/*   Updated: 2022/11/08 21:07:44 by danierod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,14 @@ void	pp(int nb)
 void	unbin(int sig)
 {
 	static char	c;
-	static int	x = 1;
 	static int	i;
 
-	if (sig == SIGUSR2)
-		c = c + x;
-	x *= 2;
-	i++;
+	c = (sig == SIGUSR2) << i++ | c;
 	if (i == 8)
 	{
 		write(1, &c, 1);
 		c = 0;
 		i = 0;
-		x = 1;
 	}
 }
 
