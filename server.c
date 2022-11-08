@@ -1,52 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                         :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danierod <danierod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 18:36:58 by danierod          #+#    #+#             */
-/*   Updated: 2022/11/04 17:21:17 by danierod         ###   ########.fr       */
+/*   Updated: 2022/11/08 17:58:43 by danierod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_talk.h"
 
-void    print(char *str, s_a *arg)
+void	pp(int nb)
 {
-    arg->i = -1;
-    while (str[++arg->i] != '\0')
-        write(1, &str[arg->i], 1);
+	if (nb > 9)
+		pp(nb / 10);
+	write(1, &"0123456789"[nb % 10], 1);
 }
 
-void    stoi(char *str, s_a *arg)
+void	unbin(int sig)
 {
-    arg->pid = arg->i = 0;
-    while (str[arg->i] && str[arg->i] != '\0')
-        arg->pid = arg->pid * 10 + (str[arg->i++] - 48);
+	static char	c;
+	static int	x = 1;
+	static int	i;
+
+	if (sig == SIGUSR2)
+		c = c + x;
+	x *= 2;
+	i++;
+	if (i == 8)
+	{
+		write(1, &c, 1);
+		c = 0;
+		i = 0;
+		x = 1;
+	}
 }
-void    bin_conv(char *str, s_a *arg)
+
+int	main(void)
 {
-    arg->i = -1;
-    while (str[++arg->i] != '\0')
-    {
-        arg->bin_str[arg->i] = str[arg->i] >> 1 & 1;
-        arg->var++;
-    }
-    arg->bin_str[arg->i] = '\0';
-}
-int     main(int ac, char **av)
-{
-    s_a arg;
+	int	pid;
 
-    if (ac != 3)
-        print("Wrong number of arguments.", &arg);
-    
-    stoi(av[1], &arg);
-
-    bin_conv(av[2], &arg);
-
-    printf("\n%d\n", arg.pid);
-    printf("%s\n", arg.bin_str);
-    return (0);
+	pid = 0;
+	pid = getpid();
+	write(1, "PID: ", 5);
+	pp(pid);
+	write(1, "\n\n", 2);
+	signal(SIGUSR1, unbin);
+	signal(SIGUSR2, unbin);
+	while (1)
+		pause();
+	return (0);
 }

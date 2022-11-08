@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mini_talk.c                                         :+:      :+:    :+:   */
+/*   mini_talk.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danierod <danierod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 18:36:58 by danierod          #+#    #+#             */
-/*   Updated: 2022/11/04 17:21:17 by danierod         ###   ########.fr       */
+/*   Updated: 2022/11/06 22:06:10 by danierod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@
 
 typedef struct s_arg
 {
-    int     i;
-    int     var;
-    int     pid;
-    char    bin_str[8];
+	char	c;
+	int		i;
+	int		x;
+	int		pid;
+}	t_a;
 
-}   s_a;
-
-void    bin_conv(char *str, s_a *arg);
-void    stoi(char *str, s_a *arg);
-void    print(char *str, s_a *arg);
+void	set_bin(char *pid, char *str);
+int		set_pid(char *str);
+void	unbid(int sig);
+void	pp(int nb);
 
 #endif
