@@ -6,7 +6,7 @@
 /*   By: danierod <danierod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 18:36:58 by danierod          #+#    #+#             */
-/*   Updated: 2022/11/09 15:27:26 by danierod         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:33:57 by danierod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	unbin(int sig)
 	static int	i;
 
 	c = (sig == SIGUSR2) << i++ | c;
-	if (i == 8)
+	if (i == 7)
 	{
 		write(1, &c, 1);
 		c = 0;

@@ -6,13 +6,14 @@
 /*   By: danierod <danierod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 18:36:58 by danierod          #+#    #+#             */
-/*   Updated: 2022/11/08 21:11:57 by danierod         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:34:30 by danierod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINI_TALK_H
 # define MINI_TALK_H
 
+# include <string.h>
 # include <signal.h>
 # include <fcntl.h>
 # include <unistd.h>

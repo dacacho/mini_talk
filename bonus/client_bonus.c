@@ -6,7 +6,7 @@
 /*   By: danierod <danierod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 18:36:58 by danierod          #+#    #+#             */
-/*   Updated: 2022/11/09 15:27:15 by danierod         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:55:03 by danierod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	set_bin(char *pid, char *str)
 				kill(set_pid(pid), SIGUSR2);
 			else
 				kill(set_pid(pid), SIGUSR1);
-			usleep(80);
+			usleep(500);
 		}
 	}
 }
